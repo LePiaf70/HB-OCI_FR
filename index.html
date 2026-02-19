@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HB-OCI · Piper J3C-65 · À vendre</title>
+<title>HB-OCI · Piper J3C-65 · For Sale</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -12,1237 +12,914 @@
     --gold-light: #E8C97A;
     --cream: #F5F0E8;
     --dark: #1A1610;
-    --mid: #3D3422;
-    --sky: #B8D4E8;
-    --red: #C0392B;
     --text: #2C2416;
     --muted: #8A7A5A;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    overflow-x: hidden;
-  }
-
-  /* ─── HERO ─── */
-  .hero {
-    position: relative;
-    height: 100vh;
-    min-height: 700px;
-    overflow: hidden;
+  /* ── LANG SWITCHER ── */
+  .lang-switcher {
+    position: fixed;
+    top: 1.2rem; left: 50%; transform: translateX(-50%);
+    z-index: 200;
     display: flex;
-    align-items: flex-end;
-  }
-
-  .hero-img {
-    position: absolute;
-    inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center;
-    filter: brightness(0.75) saturate(1.1);
-    transform: scale(1.04);
-    animation: slowzoom 18s ease-out forwards;
-  }
-
-  @keyframes slowzoom {
-    to { transform: scale(1.0); }
-  }
-
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(10,8,4,0.15) 0%,
-      rgba(10,8,4,0.0) 40%,
-      rgba(10,8,4,0.7) 80%,
-      rgba(10,8,4,0.92) 100%
-    );
-  }
-
-  /* Corner logo badge */
-  .corner-badge {
-    position: absolute;
-    top: 2rem;
-    left: 2.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    z-index: 10;
-    opacity: 0;
-    animation: fadein 1s ease 0.5s forwards;
-  }
-
-  .corner-badge svg { width: 44px; height: 44px; }
-  .corner-badge-text {
-    color: rgba(255,255,255,0.9);
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    line-height: 1.5;
-  }
-  .corner-badge-text strong {
-    display: block;
-    font-size: 0.85rem;
-    color: var(--gold-light);
-  }
-
-  /* Registration pill top-right */
-  .reg-pill {
-    position: absolute;
-    top: 2rem; right: 2.5rem;
-    background: rgba(201,168,76,0.15);
-    border: 1px solid rgba(201,168,76,0.5);
-    backdrop-filter: blur(6px);
-    padding: 0.5rem 1.2rem;
+    background: rgba(26,22,16,0.78);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(201,168,76,0.35);
     border-radius: 100px;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.9rem;
-    letter-spacing: 0.18em;
-    color: var(--gold-light);
-    z-index: 10;
+    padding: 4px;
     opacity: 0;
-    animation: fadein 1s ease 0.7s forwards;
+    animation: fadein 0.8s ease 1.2s forwards;
   }
-
-  .hero-content {
-    position: relative;
-    z-index: 5;
-    padding: 0 3rem 3.5rem;
-    width: 100%;
-    opacity: 0;
-    animation: slideup 1s ease 0.4s forwards;
-  }
-
-  @keyframes slideup {
-    from { transform: translateY(30px); opacity: 0; }
-    to   { transform: translateY(0);    opacity: 1; }
-  }
-
-  @keyframes fadein {
-    to { opacity: 1; }
-  }
-
-  .hero-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.22em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
-
-  .hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 7vw, 6rem);
-    font-weight: 900;
-    line-height: 0.92;
-    color: #fff;
-    margin-bottom: 1rem;
-  }
-
-  .hero-title em {
-    font-style: italic;
-    color: var(--gold-light);
-  }
-
-  .hero-sub {
-    font-size: 1rem;
-    color: rgba(255,255,255,0.7);
-    font-weight: 300;
-    letter-spacing: 0.05em;
-    max-width: 520px;
-    line-height: 1.6;
-  }
-
-  .hero-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    margin-top: 1.8rem;
-    background: var(--gold);
-    color: var(--dark);
-    font-weight: 500;
-    font-size: 0.9rem;
-    letter-spacing: 0.08em;
-    padding: 0.85rem 2rem;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.2s;
-  }
-
-  .hero-cta:hover {
-    background: var(--gold-light);
-    transform: translateY(-2px);
-  }
-
-  .scroll-hint {
-    position: absolute;
-    bottom: 1.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.4rem;
-    opacity: 0;
-    animation: fadein 1s ease 2s forwards;
-  }
-
-  .scroll-hint span {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.2em;
-    color: rgba(255,255,255,0.5);
-  }
-
-  .scroll-arrow {
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, rgba(201,168,76,0.7), transparent);
-    animation: scrollpulse 2s ease-in-out infinite;
-  }
-
-  @keyframes scrollpulse {
-    0%, 100% { opacity: 0.4; transform: scaleY(0.8); }
-    50% { opacity: 1; transform: scaleY(1); }
-  }
-
-  /* ─── INTRO STRIP ─── */
-  .intro-strip {
-    background: var(--dark);
-    color: #fff;
-    padding: 3rem 3rem;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
-    gap: 0;
-    align-items: center;
-  }
-
-  .stat-item { text-align: center; padding: 0 1.5rem; }
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--gold);
-    line-height: 1;
-  }
-  .stat-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
-    color: rgba(255,255,255,0.5);
-    text-transform: uppercase;
-    margin-top: 0.3rem;
-  }
-  .stat-divider { width: 1px; height: 40px; background: rgba(201,168,76,0.25); }
-
-  /* ─── SECTION STYLES ─── */
-  section { padding: 5rem 0; }
-
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
-
-  .section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.22em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    font-weight: 700;
-    line-height: 1.1;
-    color: var(--dark);
-    margin-bottom: 1.5rem;
-  }
-
-  .section-title em { font-style: italic; color: var(--muted); }
-
-  /* ─── HISTOIRE ─── */
-  .history-section { background: var(--cream); }
-
-  .history-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
-
-  .history-text p {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    color: var(--text);
-    font-weight: 300;
-    margin-bottom: 1.2rem;
-  }
-
-  .history-text p strong { color: var(--dark); font-weight: 500; }
-
-  .timeline {
-    position: relative;
-    padding-left: 1.5rem;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 6px; bottom: 6px;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--gold), rgba(201,168,76,0.1));
-  }
-
-  .tl-item {
-    position: relative;
-    padding-bottom: 1.8rem;
-    opacity: 0;
-    transform: translateX(15px);
-    transition: all 0.5s ease;
-  }
-
-  .tl-item.visible { opacity: 1; transform: translateX(0); }
-
-  .tl-item::before {
-    content: '';
-    position: absolute;
-    left: -1.5rem;
-    top: 6px;
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--gold);
-    transform: translateX(-3px);
-  }
-
-  .tl-year {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    color: var(--gold);
-    margin-bottom: 0.2rem;
-  }
-
-  .tl-desc {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: var(--text);
-  }
-
-  /* ─── PHOTO GALLERY ─── */
-  .gallery-section { background: var(--dark); padding: 5rem 0; }
-
-  .gallery-section .section-title { color: #fff; }
-  .gallery-section .section-label { color: var(--gold); }
-
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 280px 220px;
-    gap: 6px;
-    margin-top: 2rem;
-  }
-
-  .gallery-item {
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-  }
-
-  .gallery-item:first-child {
-    grid-column: span 2;
-    grid-row: span 2;
-  }
-
-  .gallery-item img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-    display: block;
-  }
-
-  .gallery-item:hover img { transform: scale(1.05); }
-
-  .gallery-item .overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0);
-    transition: background 0.3s;
-    display: flex;
-    align-items: flex-end;
-    padding: 1rem;
-  }
-
-  .gallery-item:hover .overlay { background: rgba(0,0,0,0.2); }
-
-  .img-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    color: rgba(255,255,255,0);
-    text-transform: uppercase;
-    transition: color 0.3s;
-  }
-
-  .gallery-item:hover .img-label { color: rgba(255,255,255,0.8); }
-
-  /* ─── SPECS ─── */
-  .specs-section { background: #fff; }
-
-  .specs-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-  }
-
-  .spec-card {
-    border: 1px solid rgba(201,168,76,0.2);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  .spec-card-header {
-    background: var(--dark);
-    padding: 1rem 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .spec-card-header h3 {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.18em;
-    color: var(--gold);
-    text-transform: uppercase;
-  }
-
-  .spec-icon { font-size: 1.1rem; }
-
-  .spec-list { padding: 0; list-style: none; }
-
-  .spec-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 0.75rem 1.5rem;
-    border-bottom: 1px solid rgba(201,168,76,0.1);
-    font-size: 0.88rem;
-  }
-
-  .spec-list li:last-child { border-bottom: none; }
-
-  .spec-key {
-    color: var(--muted);
-    font-weight: 400;
-    flex: 0 0 auto;
-    padding-right: 1rem;
-  }
-
-  .spec-val {
-    color: var(--dark);
-    font-weight: 500;
-    text-align: right;
-  }
-
-  .spec-val.highlight {
-    color: var(--gold);
-    font-family: 'DM Mono', monospace;
-    font-size: 0.8rem;
-  }
-
-  /* ─── AVIONICS HIGHLIGHT ─── */
-  .avionics-section { background: var(--dark); color: #fff; }
-
-  .avionics-section .section-title { color: #fff; }
-
-  .avionics-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-  }
-
-  .avionics-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(201,168,76,0.15);
-    border-radius: 4px;
-    padding: 1.5rem;
-    transition: border-color 0.3s, background 0.3s;
-  }
-
-  .avionics-card:hover {
-    border-color: rgba(201,168,76,0.5);
-    background: rgba(201,168,76,0.06);
-  }
-
-  .av-icon {
-    font-size: 1.5rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .av-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 0.3rem;
-  }
-
-  .av-model {
-    font-size: 0.92rem;
-    font-weight: 500;
-    color: #fff;
-    margin-bottom: 0.2rem;
-  }
-
-  .av-detail {
-    font-size: 0.78rem;
-    color: rgba(255,255,255,0.45);
-    line-height: 1.5;
-  }
-
-  /* ─── ELECTRICAL HIGHLIGHT ─── */
-  .electric-banner {
-    background: linear-gradient(135deg, #2C2010 0%, #1A1610 100%);
-    border: 1px solid rgba(201,168,76,0.4);
-    border-radius: 4px;
-    padding: 2rem 2.5rem;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    margin-top: 2.5rem;
-  }
-
-  .electric-icon {
-    font-size: 3rem;
-    flex-shrink: 0;
-  }
-
-  .electric-text h4 {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 0.4rem;
-  }
-
-  .electric-text p {
-    font-size: 1rem;
-    color: #fff;
-    line-height: 1.6;
-  }
-
-  .electric-text p span { color: var(--gold-light); font-weight: 500; }
-
-  /* ─── PRICE SECTION ─── */
-  .price-section { background: var(--cream); }
-
-  .price-card {
-    background: var(--dark);
-    border-radius: 4px;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 320px;
-  }
-
-  .price-left {
-    padding: 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .price-amount {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 900;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 0.3rem;
-  }
-
-  .price-note {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    color: rgba(255,255,255,0.4);
-  }
-
-  .price-avail {
-    background: rgba(201,168,76,0.12);
-    border: 1px solid rgba(201,168,76,0.3);
-    border-radius: 3px;
-    padding: 0.6rem 1rem;
+  .lang-btn {
     font-family: 'DM Mono', monospace;
     font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    color: var(--gold-light);
-    margin-top: 1.5rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    width: fit-content;
-  }
-
-  .price-right {
-    padding: 3rem;
-    background: rgba(255,255,255,0.03);
-    border-left: 1px solid rgba(201,168,76,0.15);
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    justify-content: center;
-  }
-
-  .contact-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .contact-icon {
-    width: 36px; height: 36px;
-    background: rgba(201,168,76,0.1);
-    border-radius: 3px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1rem;
-    flex-shrink: 0;
-  }
-
-  .contact-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-    color: rgba(255,255,255,0.35);
-    text-transform: uppercase;
-  }
-
-  .contact-value {
-    font-size: 0.92rem;
-    color: #fff;
-    font-weight: 400;
-    margin-top: 0.1rem;
-  }
-
-  .contact-value a {
-    color: var(--gold-light);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .contact-value a:hover { color: #fff; }
-
-  /* ─── FOOTER ─── */
-  footer {
-    background: var(--dark);
-    border-top: 1px solid rgba(201,168,76,0.15);
-    padding: 2rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .footer-left {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    color: rgba(255,255,255,0.3);
-  }
-
-  .footer-reg {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    font-style: italic;
-    color: var(--gold);
-  }
-
-  /* ─── LIGHTBOX ─── */
-  .lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.94);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.5);
+    background: none;
+    border: none;
+    padding: 0.45rem 1.1rem;
+    border-radius: 100px;
     cursor: pointer;
-  }
-
-  .lightbox.open { display: flex; }
-
-  .lightbox img {
-    max-width: 90vw;
-    max-height: 90vh;
-    object-fit: contain;
-    box-shadow: 0 0 80px rgba(0,0,0,0.5);
-  }
-
-  .lightbox-close {
-    position: absolute;
-    top: 1.5rem; right: 1.5rem;
-    color: rgba(255,255,255,0.6);
-    font-size: 1.5rem;
-    cursor: pointer;
-    font-family: 'DM Mono', monospace;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    width: 40px; height: 40px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
     transition: all 0.2s;
   }
+  .lang-btn:hover { color: rgba(255,255,255,0.85); }
+  .lang-btn.active { background: var(--gold); color: var(--dark); font-weight: 500; }
 
+  /* ── HERO ── */
+  .hero { position: relative; height: 100vh; min-height: 700px; overflow: hidden; display: flex; align-items: flex-end; }
+  .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: brightness(0.75) saturate(1.1); transform: scale(1.04); animation: slowzoom 18s ease-out forwards; }
+  @keyframes slowzoom { to { transform: scale(1.0); } }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,8,4,0.15) 0%, rgba(10,8,4,0.0) 40%, rgba(10,8,4,0.7) 80%, rgba(10,8,4,0.92) 100%); }
+
+  .corner-badge { position: absolute; top: 2rem; left: 2.5rem; display: flex; align-items: center; gap: 0.75rem; z-index: 10; opacity: 0; animation: fadein 1s ease 0.5s forwards; }
+  .corner-badge svg { width: 44px; height: 44px; }
+  .corner-badge-text { color: rgba(255,255,255,0.9); font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.12em; line-height: 1.5; }
+  .corner-badge-text strong { display: block; font-size: 0.85rem; color: var(--gold-light); }
+
+  .reg-pill { position: absolute; top: 2rem; right: 2.5rem; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.5); backdrop-filter: blur(6px); padding: 0.5rem 1.2rem; border-radius: 100px; font-family: 'DM Mono', monospace; font-size: 0.9rem; letter-spacing: 0.18em; color: var(--gold-light); z-index: 10; opacity: 0; animation: fadein 1s ease 0.7s forwards; }
+
+  .hero-content { position: relative; z-index: 5; padding: 0 3rem 3.5rem; width: 100%; opacity: 0; animation: slideup 1s ease 0.4s forwards; }
+  @keyframes slideup { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  @keyframes fadein { to { opacity: 1; } }
+
+  .hero-label { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.75rem; }
+  .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 7vw, 6rem); font-weight: 900; line-height: 0.92; color: #fff; margin-bottom: 1rem; }
+  .hero-title em { font-style: italic; color: var(--gold-light); }
+  .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.7); font-weight: 300; letter-spacing: 0.05em; max-width: 520px; line-height: 1.6; }
+
+  .hero-cta { display: inline-flex; align-items: center; gap: 0.6rem; margin-top: 1.8rem; background: var(--gold); color: var(--dark); font-weight: 500; font-size: 0.9rem; letter-spacing: 0.08em; padding: 0.85rem 2rem; border-radius: 4px; text-decoration: none; transition: background 0.2s, transform 0.2s; cursor: pointer; border: none; font-family: inherit; }
+  .hero-cta:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .scroll-hint { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 0.4rem; opacity: 0; animation: fadein 1s ease 2s forwards; }
+  .scroll-hint span { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.5); }
+  .scroll-arrow { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(201,168,76,0.7), transparent); animation: scrollpulse 2s ease-in-out infinite; }
+  @keyframes scrollpulse { 0%,100% { opacity: 0.4; transform: scaleY(0.8); } 50% { opacity: 1; transform: scaleY(1); } }
+
+  /* ── STATS STRIP ── */
+  .intro-strip { background: var(--dark); color: #fff; padding: 3rem; display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; align-items: center; }
+  .stat-item { text-align: center; padding: 0 1.5rem; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--gold); line-height: 1; }
+  .stat-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-top: 0.3rem; }
+  .stat-divider { width: 1px; height: 40px; background: rgba(201,168,76,0.25); }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 0; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
+  .section-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.5rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; line-height: 1.1; color: var(--dark); margin-bottom: 1.5rem; }
+  .section-title em { font-style: italic; color: var(--muted); }
+
+  /* ── HISTORY ── */
+  .history-section { background: var(--cream); }
+  .history-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .history-text p { font-size: 1.05rem; line-height: 1.8; color: var(--text); font-weight: 300; margin-bottom: 1.2rem; }
+  .history-text p strong { color: var(--dark); font-weight: 500; }
+
+  .timeline { position: relative; padding-left: 1.5rem; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(to bottom, var(--gold), rgba(201,168,76,0.1)); }
+  .tl-item { position: relative; padding-bottom: 1.8rem; opacity: 0; transform: translateX(15px); transition: all 0.5s ease; }
+  .tl-item.visible { opacity: 1; transform: translateX(0); }
+  .tl-item::before { content: ''; position: absolute; left: -1.5rem; top: 6px; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); transform: translateX(-3px); }
+  .tl-year { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; color: var(--gold); margin-bottom: 0.2rem; }
+  .tl-desc { font-size: 0.9rem; line-height: 1.6; color: var(--text); }
+
+  /* ── GALLERY ── */
+  .gallery-section { background: var(--dark); padding: 5rem 0; }
+  .gallery-section .section-title { color: #fff; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 280px 220px; gap: 6px; margin-top: 2rem; }
+  .gallery-item { overflow: hidden; position: relative; cursor: pointer; }
+  .gallery-item:first-child { grid-column: span 2; grid-row: span 2; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
+  .gallery-item:hover img { transform: scale(1.05); }
+  .gallery-item .overlay { position: absolute; inset: 0; background: rgba(0,0,0,0); transition: background 0.3s; display: flex; align-items: flex-end; padding: 1rem; }
+  .gallery-item:hover .overlay { background: rgba(0,0,0,0.2); }
+  .img-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; color: rgba(255,255,255,0); text-transform: uppercase; transition: color 0.3s; }
+  .gallery-item:hover .img-label { color: rgba(255,255,255,0.8); }
+
+  /* ── SPECS ── */
+  .specs-section { background: #fff; }
+  .specs-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .spec-card { border: 1px solid rgba(201,168,76,0.2); border-radius: 4px; overflow: hidden; }
+  .spec-card-header { background: var(--dark); padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+  .spec-card-header h3 { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; }
+  .spec-icon { font-size: 1.1rem; }
+  .spec-list { padding: 0; list-style: none; }
+  .spec-list li { display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 1.5rem; border-bottom: 1px solid rgba(201,168,76,0.1); font-size: 0.88rem; }
+  .spec-list li:last-child { border-bottom: none; }
+  .spec-key { color: var(--muted); font-weight: 400; flex: 0 0 auto; padding-right: 1rem; }
+  .spec-val { color: var(--dark); font-weight: 500; text-align: right; }
+  .spec-val.hl { color: var(--gold); font-family: 'DM Mono', monospace; font-size: 0.8rem; }
+
+  /* ── AVIONICS ── */
+  .avionics-section { background: var(--dark); color: #fff; }
+  .avionics-section .section-title { color: #fff; }
+  .avionics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+  .avionics-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.15); border-radius: 4px; padding: 1.5rem; transition: border-color 0.3s, background 0.3s; }
+  .avionics-card:hover { border-color: rgba(201,168,76,0.5); background: rgba(201,168,76,0.06); }
+  .av-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+  .av-title { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.3rem; }
+  .av-model { font-size: 0.92rem; font-weight: 500; color: #fff; margin-bottom: 0.2rem; }
+  .av-detail { font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+  .electric-banner { background: linear-gradient(135deg, #2C2010 0%, #1A1610 100%); border: 1px solid rgba(201,168,76,0.4); border-radius: 4px; padding: 2rem 2.5rem; display: flex; align-items: center; gap: 2rem; margin-top: 2.5rem; }
+  .electric-icon { font-size: 3rem; flex-shrink: 0; }
+  .electric-text h4 { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.4rem; }
+  .electric-text p { font-size: 1rem; color: #fff; line-height: 1.6; }
+  .electric-text p span { color: var(--gold-light); font-weight: 500; }
+
+  /* ── DOCS ── */
+  .docs-section { background: #fff; padding: 4rem 0; }
+  .docs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1rem; margin-top: 2rem; }
+  .doc-card { border: 1px solid rgba(201,168,76,0.2); border-radius: 4px; padding: 1.25rem; display: flex; gap: 0.75rem; align-items: flex-start; }
+  .doc-icon { font-size: 1.3rem; }
+  .doc-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.2rem; }
+  .doc-text { font-size: 0.88rem; color: var(--dark); }
+
+  /* ── PRICE ── */
+  .price-section { background: var(--cream); }
+  .price-card { background: var(--dark); border-radius: 4px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; min-height: 320px; margin-top: 2rem; }
+  .price-left { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; }
+  .price-top-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; color: rgba(255,255,255,0.4); margin-bottom: 0.5rem; }
+  .price-amount { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; color: var(--gold); line-height: 1; margin-bottom: 0.3rem; }
+  .price-note { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.4); }
+  .price-avail { background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3); border-radius: 3px; padding: 0.6rem 1rem; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; color: var(--gold-light); margin-top: 1.5rem; display: inline-flex; align-items: center; gap: 0.5rem; width: fit-content; }
+  .price-cond-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.3); margin-bottom: 0.5rem; margin-top: 2rem; }
+  .price-cond-text { font-size: 0.83rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+  .price-right { padding: 3rem; background: rgba(255,255,255,0.03); border-left: 1px solid rgba(201,168,76,0.15); display: flex; flex-direction: column; gap: 1.5rem; justify-content: center; }
+  .contact-heading { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; color: rgba(255,255,255,0.35); text-transform: uppercase; }
+  .contact-item { display: flex; align-items: center; gap: 1rem; }
+  .contact-icon { width: 36px; height: 36px; background: rgba(201,168,76,0.1); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .contact-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.35); text-transform: uppercase; }
+  .contact-value { font-size: 0.92rem; color: #fff; font-weight: 400; margin-top: 0.1rem; }
+  .contact-value a { color: var(--gold-light); text-decoration: none; transition: color 0.2s; }
+  .contact-value a:hover { color: #fff; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--dark); border-top: 1px solid rgba(201,168,76,0.15); padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; }
+  .footer-side { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.3); }
+  .footer-reg { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--gold); }
+
+  /* ── LIGHTBOX ── */
+  .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.94); z-index: 1000; align-items: center; justify-content: center; cursor: pointer; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; box-shadow: 0 0 80px rgba(0,0,0,0.5); }
+  .lightbox-close { position: absolute; top: 1.5rem; right: 1.5rem; color: rgba(255,255,255,0.6); cursor: pointer; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: all 0.2s; }
   .lightbox-close:hover { color: #fff; background: rgba(255,255,255,0.15); }
 
-  /* ─── MISSING PHOTO PLACEHOLDER ─── */
-  .photo-placeholder {
-    width: 100%; height: 100%;
-    background: linear-gradient(135deg, #2C2416 0%, #1A1610 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    min-height: 200px;
-  }
-
+  /* ── PLACEHOLDER ── */
+  .photo-placeholder { width: 100%; height: 100%; background: linear-gradient(135deg, #2C2416 0%, #1A1610 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; min-height: 200px; }
   .photo-placeholder .ph-icon { font-size: 2rem; opacity: 0.3; }
+  .photo-placeholder .ph-name { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em; color: rgba(201,168,76,0.4); }
 
-  .photo-placeholder .ph-name {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    color: rgba(201,168,76,0.4);
-  }
-
-  /* ─── RESPONSIVE ─── */
+  /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     .intro-strip { grid-template-columns: 1fr 1fr; gap: 2rem; }
     .stat-divider { display: none; }
     .history-grid, .specs-layout, .avionics-grid { grid-template-columns: 1fr; }
     .price-card { grid-template-columns: 1fr; }
     .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-    .gallery-item:first-child { grid-column: span 2; }
+    .gallery-item:first-child { grid-column: span 2; height: 260px; }
+    .gallery-item { height: 180px; }
     .hero-content { padding: 0 1.5rem 2.5rem; }
     .container { padding: 0 1.5rem; }
     footer { flex-direction: column; gap: 1rem; text-align: center; }
+    .lang-switcher { top: auto; bottom: 1.2rem; }
   }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════
-     HERO
-══════════════════════════════════════ -->
+<!-- LANG SWITCHER -->
+<nav class="lang-switcher">
+  <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" id="btn-fr" onclick="setLang('fr')">FR</button>
+  <button class="lang-btn" id="btn-de" onclick="setLang('de')">DE</button>
+</nav>
+
+<!-- HERO -->
 <section class="hero">
-  <img
-    class="hero-img"
-    src="photos/IMG_0668.JPG"
-    alt="Piper J3C-65 HB-OCI en vol"
-    onerror="this.style.background='linear-gradient(160deg,#3D3422,#1A1610)';this.style.display='block';"
-  >
+  <img class="hero-img" src="photos/IMG_0668.JPG" alt="Piper J3C-65 HB-OCI"
+    onerror="this.style.background='linear-gradient(160deg,#3D3422,#1A1610)';this.removeAttribute('src');">
   <div class="hero-overlay"></div>
-
-  <!-- Club badge -->
   <div class="corner-badge">
-    <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 44 44" fill="none">
       <circle cx="22" cy="22" r="21" stroke="rgba(201,168,76,0.6)" stroke-width="1"/>
-      <text x="22" y="27" text-anchor="middle" font-family="serif" font-size="14" fill="rgba(201,168,76,0.9)">✈</text>
+      <text x="22" y="27" text-anchor="middle" font-family="serif" font-size="14" fill="rgba(201,168,76,0.9)">&#9992;</text>
     </svg>
-    <div class="corner-badge-text">
-      <strong>Fluggruppe Albatros</strong>
-      Birrfeld · LSZF
-    </div>
+    <div class="corner-badge-text"><strong>Fluggruppe Albatros</strong>Birrfeld &middot; LSZF</div>
   </div>
-
   <div class="reg-pill">HB-OCI</div>
-
   <div class="hero-content">
-    <div class="hero-label">Vente · Zu Verkaufen · For Sale</div>
+    <div class="hero-label" data-i18n="hero.label"></div>
     <h1 class="hero-title">Piper<br><em>J3C-65</em></h1>
-    <p class="hero-sub">Un avion mythique né en 1944 — l'apprentissage du vol dans sa forme la plus pure. Désormais disponible pour poursuivre son histoire.</p>
-    <a href="#prix" class="hero-cta">
+    <p class="hero-sub" data-i18n="hero.sub"></p>
+    <button class="hero-cta" onclick="document.getElementById('prix').scrollIntoView({behavior:'smooth'})">
       <span>79.500 CHF</span>
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
+    </button>
   </div>
-
   <div class="scroll-hint">
-    <span>SCROLL</span>
+    <span data-i18n="hero.scroll"></span>
     <div class="scroll-arrow"></div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     STATS STRIP
-══════════════════════════════════════ -->
+<!-- STATS -->
 <div class="intro-strip">
-  <div class="stat-item">
-    <div class="stat-num">1944</div>
-    <div class="stat-label">Année de construction</div>
-  </div>
+  <div class="stat-item"><div class="stat-num">1944</div><div class="stat-label" data-i18n="stats.built"></div></div>
   <div class="stat-divider"></div>
-  <div class="stat-item">
-    <div class="stat-num">8'509</div>
-    <div class="stat-label">Heures cellule (TSN)</div>
-  </div>
+  <div class="stat-item"><div class="stat-num">8'509</div><div class="stat-label" data-i18n="stats.airframe"></div></div>
   <div class="stat-divider"></div>
-  <div class="stat-item">
-    <div class="stat-num">~250</div>
-    <div class="stat-label">Heures moteur (TSO)</div>
-  </div>
+  <div class="stat-item"><div class="stat-num">~250</div><div class="stat-label" data-i18n="stats.engine"></div></div>
   <div class="stat-divider"></div>
-  <div class="stat-item">
-    <div class="stat-num">80+</div>
-    <div class="stat-label">Ans d'histoire</div>
-  </div>
+  <div class="stat-item"><div class="stat-num">80+</div><div class="stat-label" data-i18n="stats.history"></div></div>
 </div>
 
-<!-- ═══════════════════════════════════
-     HISTOIRE
-══════════════════════════════════════ -->
+<!-- HISTORY -->
 <section class="history-section">
   <div class="container">
     <div class="history-grid">
       <div class="history-text">
-        <div class="section-label">Histoire &amp; Provenance</div>
-        <h2 class="section-title">Une légende<br><em>née en guerre</em></h2>
-        <p>Le Piper J-3 Cub est l'un des avions les plus emblématiques de l'aviation légère mondiale. Né dans les années 1930, il a formé des générations de pilotes et acquis ses lettres de noblesse lors de la Seconde Guerre mondiale sous la désignation militaire <strong>L-4 Grasshopper</strong>, servant à l'observation et à la liaison pour l'armée américaine.</p>
-        <p>Notre HB-OCI, portant le numéro de série militaire <strong>44-12534</strong>, est sorti d'usine en 1944. Après son service, il a traversé différentes mains et pays avant de rejoindre la Suisse, où il porte fièrement son immatriculation suisse depuis les années 1960.</p>
-        <p>Aujourd'hui basé à Birrfeld (LSZF) au sein de la Fluggruppe Albatros, cet appareil représente un morceau d'histoire vivant, <strong>méticuleusement entretenu</strong>, prêt à transmettre la magie du vol « à l'ancienne » à son prochain propriétaire.</p>
+        <div class="section-label" data-i18n="history.label"></div>
+        <h2 class="section-title" data-i18n="history.title"></h2>
+        <p data-i18n="history.p1"></p>
+        <p data-i18n="history.p2"></p>
+        <p data-i18n="history.p3"></p>
       </div>
-
       <div>
-        <div class="section-label" style="margin-bottom:1.5rem;">Chronologie</div>
+        <div class="section-label" style="margin-bottom:1.5rem;" data-i18n="history.timeline"></div>
         <div class="timeline">
-          <div class="tl-item">
-            <div class="tl-year">1944</div>
-            <div class="tl-desc">Production WWII — N° de série militaire 44-12534 (ex. 12704). Service en tant que L-4 Grasshopper.</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-year">Années 60</div>
-            <div class="tl-desc">Immatriculation suisse HB-OCI. Basé au terrain d'Ecuvillens, anciennement enregistré SE-AUG.</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-year">1969</div>
-            <div class="tl-desc">Accident référencé — enquête et documentation disponible.</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-year">1994</div>
-            <div class="tl-desc">Reconstruction complète et peinture jaune caractéristique. Transfert à Môtier.</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-year">2001</div>
-            <div class="tl-desc">Transfert à Schupfart.</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-year">2013</div>
-            <div class="tl-desc">Intégration à la Fluggruppe Albatros, Birrfeld (LSZF).</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-year">2022</div>
-            <div class="tl-desc">Révision moteur complète (Cermec). Continental C 90-8F remis à neuf.</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-year">2024–2025</div>
-            <div class="tl-desc">Réparation fuselage (nov. 2024). Nouvelle ligne d'échappement complète (oct. 2025). Airbox filtre papier-huile (fév. 2025). Inspection BAZL (mai 2025).</div>
-          </div>
+          <div class="tl-item"><div class="tl-year">1944</div><div class="tl-desc" data-i18n="tl.1944"></div></div>
+          <div class="tl-item"><div class="tl-year" data-i18n="tl.60s.year"></div><div class="tl-desc" data-i18n="tl.60s"></div></div>
+          <div class="tl-item"><div class="tl-year">1969</div><div class="tl-desc" data-i18n="tl.1969"></div></div>
+          <div class="tl-item"><div class="tl-year">1994</div><div class="tl-desc" data-i18n="tl.1994"></div></div>
+          <div class="tl-item"><div class="tl-year">2001</div><div class="tl-desc" data-i18n="tl.2001"></div></div>
+          <div class="tl-item"><div class="tl-year">2013</div><div class="tl-desc" data-i18n="tl.2013"></div></div>
+          <div class="tl-item"><div class="tl-year">2022</div><div class="tl-desc" data-i18n="tl.2022"></div></div>
+          <div class="tl-item"><div class="tl-year">2024&ndash;2025</div><div class="tl-desc" data-i18n="tl.2025"></div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     GALLERY
-══════════════════════════════════════ -->
+<!-- GALLERY -->
 <section class="gallery-section" id="photos">
   <div class="container">
-    <div class="section-label">Galerie Photographique</div>
-    <h2 class="section-title">L'avion en images</h2>
+    <div class="section-label" data-i18n="gallery.label"></div>
+    <h2 class="section-title" data-i18n="gallery.title"></h2>
   </div>
-  <div class="container" style="max-width:100%;padding:0 1.5rem;">
+  <div style="padding:0 1.5rem;">
     <div class="gallery-grid">
-      <!-- Main cover image (same as hero) -->
       <div class="gallery-item" onclick="openLightbox('photos/IMG_0668.JPG')">
-        <img src="photos/IMG_0668.JPG" alt="HB-OCI vue principale"
-          onerror="this.parentNode.innerHTML=makePhotoPlaceholder('IMG_0668.JPG')">
-        <div class="overlay"><span class="img-label">Vue principale</span></div>
+        <img src="photos/IMG_0668.JPG" alt="HB-OCI" onerror="this.parentNode.innerHTML=makePH('IMG_0668.JPG')">
+        <div class="overlay"><span class="img-label" data-i18n="gallery.main"></span></div>
       </div>
-      <!-- 5 gallery photos -->
       <div class="gallery-item" onclick="openLightbox('photos/Photo1.jpg')">
-        <img src="photos/Photo1.jpg" alt="HB-OCI"
-          onerror="this.parentNode.innerHTML=makePhotoPlaceholder('Photo1.jpg')">
-        <div class="overlay"><span class="img-label">Détail</span></div>
+        <img src="photos/Photo1.jpg" alt="HB-OCI" onerror="this.parentNode.innerHTML=makePH('Photo1.jpg')">
+        <div class="overlay"><span class="img-label" data-i18n="gallery.l1"></span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox('photos/Photo2.JPG')">
-        <img src="photos/Photo2.JPG" alt="HB-OCI"
-          onerror="this.parentNode.innerHTML=makePhotoPlaceholder('Photo2.JPG')">
-        <div class="overlay"><span class="img-label">Détail</span></div>
+        <img src="photos/Photo2.JPG" alt="HB-OCI" onerror="this.parentNode.innerHTML=makePH('Photo2.JPG')">
+        <div class="overlay"><span class="img-label" data-i18n="gallery.l2"></span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox('photos/Photo3.JPG')">
-        <img src="photos/Photo3.JPG" alt="HB-OCI"
-          onerror="this.parentNode.innerHTML=makePhotoPlaceholder('Photo3.JPG')">
-        <div class="overlay"><span class="img-label">Cockpit</span></div>
+        <img src="photos/Photo3.JPG" alt="HB-OCI" onerror="this.parentNode.innerHTML=makePH('Photo3.JPG')">
+        <div class="overlay"><span class="img-label" data-i18n="gallery.l3"></span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox('photos/Photo4.JPG')">
-        <img src="photos/Photo4.JPG" alt="HB-OCI"
-          onerror="this.parentNode.innerHTML=makePhotoPlaceholder('Photo4.JPG')">
-        <div class="overlay"><span class="img-label">Moteur</span></div>
+        <img src="photos/Photo4.JPG" alt="HB-OCI" onerror="this.parentNode.innerHTML=makePH('Photo4.JPG')">
+        <div class="overlay"><span class="img-label" data-i18n="gallery.l4"></span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox('photos/Photo5.jpeg')">
-        <img src="photos/Photo5.jpeg" alt="HB-OCI"
-          onerror="this.parentNode.innerHTML=makePhotoPlaceholder('Photo5.jpeg')">
-        <div class="overlay"><span class="img-label">Avionique</span></div>
+        <img src="photos/Photo5.jpeg" alt="HB-OCI" onerror="this.parentNode.innerHTML=makePH('Photo5.jpeg')">
+        <div class="overlay"><span class="img-label" data-i18n="gallery.l5"></span></div>
       </div>
     </div>
-    <p style="text-align:center;margin-top:1.5rem;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:rgba(255,255,255,0.3);">CLIQUEZ SUR UNE PHOTO POUR AGRANDIR</p>
+    <p style="text-align:center;margin-top:1.5rem;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:rgba(255,255,255,0.3);" data-i18n="gallery.hint"></p>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     SPECS
-══════════════════════════════════════ -->
+<!-- SPECS -->
 <section class="specs-section" id="specs">
   <div class="container">
-    <div class="section-label">Fiche Technique</div>
-    <h2 class="section-title">Caractéristiques<br><em>& état général</em></h2>
-
+    <div class="section-label" data-i18n="specs.label"></div>
+    <h2 class="section-title" data-i18n="specs.title"></h2>
     <div class="specs-layout" style="margin-top:2.5rem;">
-
       <div class="spec-card">
-        <div class="spec-card-header">
-          <span class="spec-icon">✈</span>
-          <h3>Identification</h3>
-        </div>
+        <div class="spec-card-header"><span class="spec-icon">&#9992;</span><h3 data-i18n="specs.id.header"></h3></div>
         <ul class="spec-list">
-          <li><span class="spec-key">Modèle</span><span class="spec-val">Piper J3C-65 / L-4 Original</span></li>
-          <li><span class="spec-key">Immatriculation</span><span class="spec-val highlight">HB-OCI</span></li>
-          <li><span class="spec-key">Numéro de série</span><span class="spec-val">44-12534</span></li>
-          <li><span class="spec-key">Anciens numéros</span><span class="spec-val">ex. 12704 · SE-AUG</span></li>
-          <li><span class="spec-key">Année</span><span class="spec-val">1944</span></li>
-          <li><span class="spec-key">Pays d'immatriculation</span><span class="spec-val">Suisse</span></li>
+          <li><span class="spec-key" data-i18n="specs.id.model"></span><span class="spec-val">Piper J3C-65 / L-4 Original</span></li>
+          <li><span class="spec-key" data-i18n="specs.id.reg"></span><span class="spec-val hl">HB-OCI</span></li>
+          <li><span class="spec-key" data-i18n="specs.id.sn"></span><span class="spec-val">44-12534</span></li>
+          <li><span class="spec-key" data-i18n="specs.id.prev"></span><span class="spec-val">ex. 12704 &middot; SE-AUG</span></li>
+          <li><span class="spec-key" data-i18n="specs.id.year"></span><span class="spec-val">1944</span></li>
+          <li><span class="spec-key" data-i18n="specs.id.country"></span><span class="spec-val" data-i18n="specs.id.ch"></span></li>
         </ul>
       </div>
-
       <div class="spec-card">
-        <div class="spec-card-header">
-          <span class="spec-icon">⚙️</span>
-          <h3>Heures de vol</h3>
-        </div>
+        <div class="spec-card-header"><span class="spec-icon">&#8987;</span><h3 data-i18n="specs.hours.header"></h3></div>
         <ul class="spec-list">
-          <li><span class="spec-key">Total cellule (TSN)</span><span class="spec-val highlight">8'509 h</span></li>
-          <li><span class="spec-key">Cellule depuis révision (TSO)</span><span class="spec-val">1'937 h</span></li>
-          <li><span class="spec-key">Moteur TSN</span><span class="spec-val">6'633 h</span></li>
-          <li><span class="spec-key">Moteur depuis révision (TSO)</span><span class="spec-val highlight">~250 h</span></li>
-          <li><span class="spec-key">Prochaine révision moteur</span><span class="spec-val">dans ~1'600 h</span></li>
+          <li><span class="spec-key" data-i18n="specs.hours.tsn"></span><span class="spec-val hl">8'509 h</span></li>
+          <li><span class="spec-key" data-i18n="specs.hours.tso"></span><span class="spec-val">1'937 h</span></li>
+          <li><span class="spec-key" data-i18n="specs.hours.etsn"></span><span class="spec-val">6'633 h</span></li>
+          <li><span class="spec-key" data-i18n="specs.hours.etso"></span><span class="spec-val hl">~250 h</span></li>
+          <li><span class="spec-key" data-i18n="specs.hours.next"></span><span class="spec-val" data-i18n="specs.hours.next.val"></span></li>
         </ul>
       </div>
-
       <div class="spec-card">
-        <div class="spec-card-header">
-          <span class="spec-icon">🔧</span>
-          <h3>Moteur &amp; Hélice</h3>
-        </div>
+        <div class="spec-card-header"><span class="spec-icon">&#128295;</span><h3 data-i18n="specs.engine.header"></h3></div>
         <ul class="spec-list">
-          <li><span class="spec-key">Moteur</span><span class="spec-val">Continental C 90-8F</span></li>
-          <li><span class="spec-key">N° de série moteur</span><span class="spec-val">47285-0-8</span></li>
-          <li><span class="spec-key">Révision moteur</span><span class="spec-val">Cermec, mai 2022</span></li>
-          <li><span class="spec-key">Carburant</span><span class="spec-val">AVGAS</span></li>
-          <li><span class="spec-key">Hélice</span><span class="spec-val">MT-183 R 110-2C</span></li>
-          <li><span class="spec-key">Fabricant hélice</span><span class="spec-val">MT-Propeller GmbH</span></li>
-          <li><span class="spec-key">État hélice</span><span class="spec-val">On condition</span></li>
+          <li><span class="spec-key" data-i18n="specs.engine.type"></span><span class="spec-val">Continental C 90-8F</span></li>
+          <li><span class="spec-key" data-i18n="specs.engine.sn"></span><span class="spec-val">47285-0-8</span></li>
+          <li><span class="spec-key" data-i18n="specs.engine.overhaul"></span><span class="spec-val" data-i18n="specs.engine.overhaul.val"></span></li>
+          <li><span class="spec-key" data-i18n="specs.engine.fuel"></span><span class="spec-val">AVGAS</span></li>
+          <li><span class="spec-key" data-i18n="specs.engine.prop"></span><span class="spec-val">MT-183 R 110-2C</span></li>
+          <li><span class="spec-key" data-i18n="specs.engine.mfr"></span><span class="spec-val">MT-Propeller GmbH</span></li>
+          <li><span class="spec-key" data-i18n="specs.engine.propstat"></span><span class="spec-val">On condition</span></li>
         </ul>
       </div>
-
       <div class="spec-card">
-        <div class="spec-card-header">
-          <span class="spec-icon">📋</span>
-          <h3>Inspections &amp; Entretien</h3>
-        </div>
+        <div class="spec-card-header"><span class="spec-icon">&#128203;</span><h3 data-i18n="specs.maint.header"></h3></div>
         <ul class="spec-list">
-          <li><span class="spec-key">Inspection BAZL</span><span class="spec-val highlight">Mai 2025</span></li>
-          <li><span class="spec-key">Prochaine inspection BAZL</span><span class="spec-val">Avril 2026</span></li>
-          <li><span class="spec-key">Inspection structure</span><span class="spec-val">Mai 2025</span></li>
-          <li><span class="spec-key">Ligne d'échappement</span><span class="spec-val">Neuve — Oct. 2025</span></li>
-          <li><span class="spec-key">Airbox filtre huile</span><span class="spec-val">Fév. 2025</span></li>
-          <li><span class="spec-key">Réparation fuselage</span><span class="spec-val">Nov. 2024 (avec rapport)</span></li>
-          <li><span class="spec-key">Fahrwerk</span><span class="spec-val">Classique, bon état</span></li>
-          <li><span class="spec-key">Corrosion</span><span class="spec-val highlight">Aucune</span></li>
+          <li><span class="spec-key" data-i18n="specs.maint.bazl"></span><span class="spec-val hl" data-i18n="specs.maint.bazl.val"></span></li>
+          <li><span class="spec-key" data-i18n="specs.maint.next"></span><span class="spec-val" data-i18n="specs.maint.next.val"></span></li>
+          <li><span class="spec-key" data-i18n="specs.maint.struct"></span><span class="spec-val" data-i18n="specs.maint.struct.val"></span></li>
+          <li><span class="spec-key" data-i18n="specs.maint.exhaust"></span><span class="spec-val" data-i18n="specs.maint.exhaust.val"></span></li>
+          <li><span class="spec-key" data-i18n="specs.maint.airbox"></span><span class="spec-val" data-i18n="specs.maint.airbox.val"></span></li>
+          <li><span class="spec-key" data-i18n="specs.maint.fuse"></span><span class="spec-val" data-i18n="specs.maint.fuse.val"></span></li>
+          <li><span class="spec-key" data-i18n="specs.maint.corr"></span><span class="spec-val hl" data-i18n="specs.maint.corr.val"></span></li>
         </ul>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     AVIONICS
-══════════════════════════════════════ -->
-<section class="avionics-section" id="avionique">
+<!-- AVIONICS -->
+<section class="avionics-section" id="avionics">
   <div class="container">
-    <div class="section-label">Avionique Moderne</div>
-    <h2 class="section-title">Équipements &amp; Navigation</h2>
-    <p style="color:rgba(255,255,255,0.5);font-size:1rem;line-height:1.7;max-width:580px;margin-top:0.5rem;">
-      Malgré son âge, le HB-OCI est équipé d'une avionique moderne et conforme aux exigences actuelles de l'espace aérien européen.
-    </p>
-
+    <div class="section-label" data-i18n="av.label"></div>
+    <h2 class="section-title" data-i18n="av.title"></h2>
+    <p style="color:rgba(255,255,255,0.5);font-size:1rem;line-height:1.7;max-width:580px;margin-top:0.5rem;" data-i18n="av.intro"></p>
     <div class="avionics-grid">
       <div class="avionics-card">
-        <div class="av-icon">📡</div>
-        <div class="av-title">Transpondeur ADS-B</div>
+        <div class="av-icon">&#128225;</div>
+        <div class="av-title" data-i18n="av.transponder"></div>
         <div class="av-model">Becker BXP-6401</div>
-        <div class="av-detail">Mode S · ADS-B OUT · S/N 2013<br>Encoder Becker BE 6400</div>
+        <div class="av-detail" data-i18n="av.transponder.detail"></div>
       </div>
       <div class="avionics-card">
-        <div class="av-icon">📻</div>
-        <div class="av-title">Radio VHF</div>
+        <div class="av-icon">&#128251;</div>
+        <div class="av-title" data-i18n="av.radio"></div>
         <div class="av-model">Becker AR 4201</div>
-        <div class="av-detail">Communication radio certifiée<br>Intercom PS Engineering PM 1000 II</div>
+        <div class="av-detail" data-i18n="av.radio.detail"></div>
       </div>
       <div class="avionics-card">
-        <div class="av-icon">🛡️</div>
+        <div class="av-icon">&#128737;</div>
         <div class="av-title">ELT</div>
         <div class="av-model">Kannad ME406 AF Compact</div>
-        <div class="av-detail">S/N 2013<br>Batterie remplacée 10/2025</div>
+        <div class="av-detail" data-i18n="av.elt.detail"></div>
       </div>
       <div class="avionics-card">
-        <div class="av-icon">⚠️</div>
-        <div class="av-title">Anti-collision FLARM</div>
+        <div class="av-icon">&#9888;</div>
+        <div class="av-title" data-i18n="av.flarm"></div>
         <div class="av-model">Garrecht TRX-2000</div>
-        <div class="av-detail">PowerFLARM avec WiFi interne<br>Système de détection de trafic</div>
+        <div class="av-detail" data-i18n="av.flarm.detail"></div>
       </div>
-      <div class="avionics-card" style="grid-column: span 2;">
-        <div class="av-icon">🔌</div>
-        <div class="av-title">Système Électrique</div>
+      <div class="avionics-card" style="grid-column:span 2;">
+        <div class="av-icon">&#128268;</div>
+        <div class="av-title" data-i18n="av.elec"></div>
         <div class="av-model">BPE-14 TurboAlternator</div>
-        <div class="av-detail">
-          Équipement rare et précieux sur un Cub d'origine — le <strong style="color:var(--gold-light);">BPE-14 TurboAlternator</strong> fournit une alimentation électrique fiable pour alimenter l'ensemble de l'avionique moderne, transformant ce classique en avion pleinement opérationnel pour l'espace aérien actuel.
-        </div>
+        <div class="av-detail" data-i18n="av.elec.detail"></div>
       </div>
     </div>
-
-    <!-- Electric highlight banner -->
     <div class="electric-banner">
-      <div class="electric-icon">⚡</div>
+      <div class="electric-icon">&#9889;</div>
       <div class="electric-text">
-        <h4>Système Électrique — Avantage Décisif</h4>
-        <p>
-          L'installation du <span>BPE-14 TurboAlternator</span> est l'un des atouts majeurs de ce Cub. Contrairement à de nombreux J-3 qui restent dépourvus d'électricité, ce système permet d'alimenter en continu l'ensemble de l'avionique moderne. Une valeur ajoutée considérable pour la sécurité et la conformité réglementaire.
-        </p>
+        <h4 data-i18n="av.elec.banner.title"></h4>
+        <p data-i18n="av.elec.banner.text"></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     DOCUMENTS
-══════════════════════════════════════ -->
-<section style="background:#fff;padding:4rem 0;">
+<!-- DOCUMENTS -->
+<section class="docs-section">
   <div class="container">
-    <div class="section-label">Documentation</div>
-    <h2 class="section-title">Dossier <em>complet</em></h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:2rem;">
-      <div style="border:1px solid rgba(201,168,76,0.2);border-radius:4px;padding:1.25rem;display:flex;gap:0.75rem;align-items:flex-start;">
-        <span style="font-size:1.3rem;">📜</span>
-        <div>
-          <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.2rem;">Navigabilité</div>
-          <div style="font-size:0.88rem;color:var(--dark);">Certificat de navigabilité (CDN) en cours de validité</div>
-        </div>
-      </div>
-      <div style="border:1px solid rgba(201,168,76,0.2);border-radius:4px;padding:1.25rem;display:flex;gap:0.75rem;align-items:flex-start;">
-        <span style="font-size:1.3rem;">📔</span>
-        <div>
-          <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.2rem;">Carnets de vol</div>
-          <div style="font-size:0.88rem;color:var(--dark);">Livrets de vol et carnet de maintenance complets</div>
-        </div>
-      </div>
-      <div style="border:1px solid rgba(201,168,76,0.2);border-radius:4px;padding:1.25rem;display:flex;gap:0.75rem;align-items:flex-start;">
-        <span style="font-size:1.3rem;">🔇</span>
-        <div>
-          <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.2rem;">Acoustique</div>
-          <div style="font-size:0.88rem;color:var(--dark);">Certificat de limitation sonore (selon applicabilité)</div>
-        </div>
-      </div>
-      <div style="border:1px solid rgba(201,168,76,0.2);border-radius:4px;padding:1.25rem;display:flex;gap:0.75rem;align-items:flex-start;">
-        <span style="font-size:1.3rem;">🏛️</span>
-        <div>
-          <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.2rem;">Certifications</div>
-          <div style="font-size:0.88rem;color:var(--dark);">Type certificate et certifications suisses — copies disponibles</div>
-        </div>
-      </div>
-      <div style="border:1px solid rgba(201,168,76,0.2);border-radius:4px;padding:1.25rem;display:flex;gap:0.75rem;align-items:flex-start;">
-        <span style="font-size:1.3rem;">🔨</span>
-        <div>
-          <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:0.2rem;">Rapports travaux</div>
-          <div style="font-size:0.88rem;color:var(--dark);">Rapport complet réparation fuselage 2024 avec photos</div>
-        </div>
-      </div>
+    <div class="section-label" data-i18n="docs.label"></div>
+    <h2 class="section-title" data-i18n="docs.title"></h2>
+    <div class="docs-grid">
+      <div class="doc-card"><span class="doc-icon">&#128220;</span><div><div class="doc-label" data-i18n="docs.cdn.label"></div><div class="doc-text" data-i18n="docs.cdn.text"></div></div></div>
+      <div class="doc-card"><span class="doc-icon">&#128212;</span><div><div class="doc-label" data-i18n="docs.logs.label"></div><div class="doc-text" data-i18n="docs.logs.text"></div></div></div>
+      <div class="doc-card"><span class="doc-icon">&#128263;</span><div><div class="doc-label" data-i18n="docs.noise.label"></div><div class="doc-text" data-i18n="docs.noise.text"></div></div></div>
+      <div class="doc-card"><span class="doc-icon">&#127963;</span><div><div class="doc-label" data-i18n="docs.cert.label"></div><div class="doc-text" data-i18n="docs.cert.text"></div></div></div>
+      <div class="doc-card"><span class="doc-icon">&#128296;</span><div><div class="doc-label" data-i18n="docs.rep.label"></div><div class="doc-text" data-i18n="docs.rep.text"></div></div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     PRIX & CONTACT
-══════════════════════════════════════ -->
+<!-- PRICE -->
 <section class="price-section" id="prix">
   <div class="container">
-    <div class="section-label">Prix &amp; Contact</div>
-    <h2 class="section-title">Acquisition</h2>
-    <div class="price-card" style="margin-top:2rem;">
+    <div class="section-label" data-i18n="price.label"></div>
+    <h2 class="section-title" data-i18n="price.title"></h2>
+    <div class="price-card">
       <div class="price-left">
         <div>
-          <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.18em;color:rgba(255,255,255,0.4);margin-bottom:0.5rem;">PRIX DE VENTE</div>
+          <div class="price-top-label" data-i18n="price.selling"></div>
           <div class="price-amount">79.500</div>
-          <div class="price-note">CHF · Hors TVA · Négociable</div>
-          <div class="price-avail">
-            <span>📅</span>
-            Disponible dès le 1er avril 2026
-          </div>
+          <div class="price-note" data-i18n="price.note"></div>
+          <div class="price-avail"><span>&#128197;</span><span data-i18n="price.avail"></span></div>
         </div>
-        <div style="margin-top:2rem;">
-          <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;color:rgba(255,255,255,0.3);margin-bottom:0.5rem;">CONDITIONS</div>
-          <div style="font-size:0.83rem;color:rgba(255,255,255,0.5);line-height:1.7;">
-            Vendu en l'état, sans garantie.<br>
-            Visite possible à Birrfeld (LSZF).<br>
-            Export possible — se renseigner pour les documents requis.
-          </div>
+        <div>
+          <div class="price-cond-label" data-i18n="price.cond.label"></div>
+          <div class="price-cond-text" data-i18n="price.cond.text"></div>
         </div>
       </div>
       <div class="price-right">
-        <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.18em;color:rgba(255,255,255,0.35);margin-bottom:0.5rem;text-transform:uppercase;">Contact</div>
+        <div class="contact-heading" data-i18n="price.contact"></div>
         <div class="contact-item">
-          <div class="contact-icon">✉️</div>
-          <div>
-            <div class="contact-label">Email</div>
-            <div class="contact-value"><a href="/cdn-cgi/l/email-protection#325b5c545d72535e505346405d411c5e5b"><span class="__cf_email__" data-cfemail="30595e565f70515c525144425f431e5c59">[email&#160;protected]</span></a></div>
-          </div>
+          <div class="contact-icon">&#9993;</div>
+          <div><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:info@albatros.li">info@albatros.li</a></div></div>
         </div>
         <div class="contact-item">
-          <div class="contact-icon">📱</div>
-          <div>
-            <div class="contact-label">Téléphone / WhatsApp</div>
-            <div class="contact-value"><a href="tel:+41796157020">+41 79 615 70 20</a></div>
-          </div>
+          <div class="contact-icon">&#128241;</div>
+          <div><div class="contact-label" data-i18n="price.phone"></div><div class="contact-value"><a href="tel:+41796157020">+41 79 615 70 20</a></div></div>
         </div>
         <div class="contact-item">
-          <div class="contact-icon">📍</div>
-          <div>
-            <div class="contact-label">Localisation</div>
-            <div class="contact-value">Flugplatz Birrfeld · LSZF · Suisse</div>
-          </div>
+          <div class="contact-icon">&#128205;</div>
+          <div><div class="contact-label" data-i18n="price.location"></div><div class="contact-value" data-i18n="price.location.val"></div></div>
         </div>
         <div class="contact-item">
-          <div class="contact-icon">🕐</div>
-          <div>
-            <div class="contact-label">Disponibilité pour visite</div>
-            <div class="contact-value">Variable et flexible — sur rendez-vous</div>
-          </div>
+          <div class="contact-icon">&#128336;</div>
+          <div><div class="contact-label" data-i18n="price.visit"></div><div class="contact-value" data-i18n="price.visit.val"></div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     FOOTER
-══════════════════════════════════════ -->
+<!-- FOOTER -->
 <footer>
-  <div class="footer-left">
-    Fluggruppe Albatros · Birrfeld LSZF · Switzerland<br>
-    <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="244d4a424b644548464550564b570a484d">[email&#160;protected]</a> · +41 79 615 70 20
-  </div>
+  <div class="footer-side">Fluggruppe Albatros &middot; Birrfeld LSZF &middot; Switzerland<br>info@albatros.li &middot; +41 79 615 70 20</div>
   <div class="footer-reg">HB-OCI</div>
-  <div class="footer-left" style="text-align:right;">
-    Piper J3C-65 · 1944<br>
-    S/N 44-12534
-  </div>
+  <div class="footer-side" style="text-align:right;">Piper J3C-65 &middot; 1944<br>S/N 44-12534</div>
 </footer>
 
-<!-- ═══════════════════════════════════
-     LIGHTBOX
-══════════════════════════════════════ -->
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <div class="lightbox-close" onclick="closeLightbox()">✕</div>
-  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-close" onclick="event.stopPropagation();closeLightbox()">&#10005;</div>
+  <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Auto-fix image extensions: try .jpg if .JPG fails (GitHub/Linux is case-sensitive)
-  document.querySelectorAll('img[src^="photos/"]').forEach(img => {
-    img.addEventListener('error', function() {
-      const src = this.src;
-      if (src.endsWith('.JPG')) {
-        this.src = src.replace('.JPG', '.jpg');
-      } else if (src.endsWith('.jpg')) {
-        this.src = src.replace('.jpg', '.JPG');
-      } else if (src.endsWith('.JPEG')) {
-        this.src = src.replace('.JPEG', '.jpeg');
-      }
-    }, { once: true });
+<script>
+/* ════════════════════════════
+   TRANSLATIONS
+════════════════════════════ */
+const i18n = {
+  en: {
+    "hero.label": "For Sale &middot; Zu Verkaufen &middot; &Agrave; vendre",
+    "hero.sub": "A legendary aircraft born in 1944 &mdash; flying in its purest form. Now available to continue its story.",
+    "hero.scroll": "SCROLL",
+    "stats.built": "Year built",
+    "stats.airframe": "Airframe hours (TSN)",
+    "stats.engine": "Engine hours (TSO)",
+    "stats.history": "Years of history",
+    "history.label": "History &amp; Provenance",
+    "history.title": "A legend<br><em>born in wartime</em>",
+    "history.p1": "The Piper J-3 Cub is one of the most iconic aircraft in general aviation history. Born in the 1930s, it trained generations of pilots and earned its wings during World War II under the military designation <strong>L-4 Grasshopper</strong>, serving in observation and liaison roles for the US Army.",
+    "history.p2": "Our HB-OCI, carrying military serial number <strong>44-12534</strong>, rolled off the production line in 1944. After its service, it passed through various owners and countries before finding its home in Switzerland, proudly wearing its Swiss registration since the 1960s.",
+    "history.p3": "Today based at Birrfeld (LSZF) with Fluggruppe Albatros, this aircraft is a living piece of history, <strong>meticulously maintained</strong>, ready to pass on the magic of classic flight to its next owner.",
+    "history.timeline": "Timeline",
+    "tl.1944": "WWII production &mdash; military serial 44-12534 (ex. 12704). Service as L-4 Grasshopper.",
+    "tl.60s.year": "1960s",
+    "tl.60s": "Swiss registration HB-OCI. Based at Ecuvillens airfield. Previously registered SE-AUG.",
+    "tl.1969": "Documented accident &mdash; investigation and full report available.",
+    "tl.1994": "Complete rebuild and iconic yellow repaint. Transferred to M&ocirc;tier.",
+    "tl.2001": "Transfer to Schupfart.",
+    "tl.2013": "Joins Fluggruppe Albatros, Birrfeld (LSZF).",
+    "tl.2022": "Full engine overhaul (Cermec). Continental C 90-8F restored to new.",
+    "tl.2025": "Fuselage repair (Nov. 2024). New exhaust system (Oct. 2025). Oil-paper airbox filter (Feb. 2025). FOCA inspection (May 2025).",
+    "gallery.label": "Photo Gallery",
+    "gallery.title": "The aircraft in pictures",
+    "gallery.main": "Main view",
+    "gallery.l1": "Detail",
+    "gallery.l2": "Detail",
+    "gallery.l3": "Cockpit",
+    "gallery.l4": "Engine",
+    "gallery.l5": "Avionics",
+    "gallery.hint": "CLICK A PHOTO TO ENLARGE",
+    "specs.label": "Technical Datasheet",
+    "specs.title": "Specifications<br><em>&amp; condition</em>",
+    "specs.id.header": "Identification",
+    "specs.id.model": "Model",
+    "specs.id.reg": "Registration",
+    "specs.id.sn": "Serial number",
+    "specs.id.prev": "Previous numbers",
+    "specs.id.year": "Year",
+    "specs.id.country": "Country",
+    "specs.id.ch": "Switzerland",
+    "specs.hours.header": "Flight Hours",
+    "specs.hours.tsn": "Airframe (TSN)",
+    "specs.hours.tso": "Airframe since overhaul (TSO)",
+    "specs.hours.etsn": "Engine (TSN)",
+    "specs.hours.etso": "Engine since overhaul (TSO)",
+    "specs.hours.next": "Next engine overhaul",
+    "specs.hours.next.val": "in ~1,600 h",
+    "specs.engine.header": "Engine &amp; Propeller",
+    "specs.engine.type": "Engine",
+    "specs.engine.sn": "Engine S/N",
+    "specs.engine.overhaul": "Engine overhaul",
+    "specs.engine.overhaul.val": "Cermec, May 2022",
+    "specs.engine.fuel": "Fuel",
+    "specs.engine.prop": "Propeller",
+    "specs.engine.mfr": "Manufacturer",
+    "specs.engine.propstat": "Prop status",
+    "specs.maint.header": "Inspections &amp; Maintenance",
+    "specs.maint.bazl": "FOCA inspection",
+    "specs.maint.bazl.val": "May 2025",
+    "specs.maint.next": "Next FOCA inspection",
+    "specs.maint.next.val": "April 2026",
+    "specs.maint.struct": "Structural inspection",
+    "specs.maint.struct.val": "May 2025",
+    "specs.maint.exhaust": "Exhaust system",
+    "specs.maint.exhaust.val": "New &mdash; Oct. 2025",
+    "specs.maint.airbox": "Airbox filter",
+    "specs.maint.airbox.val": "Feb. 2025",
+    "specs.maint.fuse": "Fuselage repair",
+    "specs.maint.fuse.val": "Nov. 2024 (with report)",
+    "specs.maint.corr": "Corrosion",
+    "specs.maint.corr.val": "None",
+    "av.label": "Modern Avionics",
+    "av.title": "Equipment &amp; Navigation",
+    "av.intro": "Despite its age, HB-OCI is equipped with modern avionics fully compliant with current European airspace requirements.",
+    "av.transponder": "ADS-B Transponder",
+    "av.transponder.detail": "Mode S &middot; ADS-B OUT &middot; S/N 2013<br>Encoder Becker BE 6400",
+    "av.radio": "VHF Radio",
+    "av.radio.detail": "Certified VHF communication<br>Intercom PS Engineering PM 1000 II",
+    "av.elt.detail": "S/N 2013<br>Battery replaced 10/2025",
+    "av.flarm": "FLARM Anti-collision",
+    "av.flarm.detail": "PowerFLARM with internal WiFi<br>Traffic detection system",
+    "av.elec": "Electrical System",
+    "av.elec.detail": "Rare and valuable on an original Cub &mdash; the <strong style='color:var(--gold-light)'>BPE-14 TurboAlternator</strong> provides reliable power for all modern avionics, making this classic fully operational in today's airspace.",
+    "av.elec.banner.title": "Electrical System &mdash; A Key Advantage",
+    "av.elec.banner.text": "The <span>BPE-14 TurboAlternator</span> is one of this Cub&rsquo;s greatest assets. Unlike many J-3s without electrical power, this system continuously supplies all modern avionics &mdash; significant added value for safety and regulatory compliance.",
+    "docs.label": "Documentation",
+    "docs.title": "<em>Complete</em> dossier",
+    "docs.cdn.label": "Airworthiness",
+    "docs.cdn.text": "Valid Certificate of Airworthiness (CDN)",
+    "docs.logs.label": "Logbooks",
+    "docs.logs.text": "Complete flight logs and maintenance records",
+    "docs.noise.label": "Noise",
+    "docs.noise.text": "Noise limitation certificate (where applicable)",
+    "docs.cert.label": "Certifications",
+    "docs.cert.text": "Type certificate and Swiss certifications &mdash; copies available",
+    "docs.rep.label": "Work Reports",
+    "docs.rep.text": "Full fuselage repair report 2024 with photos",
+    "price.label": "Price &amp; Contact",
+    "price.title": "Acquisition",
+    "price.selling": "ASKING PRICE",
+    "price.note": "CHF &middot; Excl. VAT &middot; Negotiable",
+    "price.avail": "Available from 1 April 2026",
+    "price.cond.label": "CONDITIONS",
+    "price.cond.text": "Sold as-is, no warranty.<br>Viewing at Birrfeld (LSZF).<br>Export possible &mdash; enquire for required documents.",
+    "price.contact": "Contact",
+    "price.phone": "Phone / WhatsApp",
+    "price.location": "Location",
+    "price.location.val": "Flugplatz Birrfeld &middot; LSZF &middot; Switzerland",
+    "price.visit": "Viewing availability",
+    "price.visit.val": "Flexible &mdash; by appointment"
+  },
+
+  fr: {
+    "hero.label": "&Agrave; vendre &middot; For Sale &middot; Zu Verkaufen",
+    "hero.sub": "Un avion mythique n&eacute; en 1944 &mdash; l&rsquo;apprentissage du vol dans sa forme la plus pure. D&eacute;sormais disponible pour poursuivre son histoire.",
+    "hero.scroll": "D&Eacute;FILER",
+    "stats.built": "Ann&eacute;e de construction",
+    "stats.airframe": "Heures cellule (TSN)",
+    "stats.engine": "Heures moteur (TSO)",
+    "stats.history": "Ans d&rsquo;histoire",
+    "history.label": "Histoire &amp; Provenance",
+    "history.title": "Une l&eacute;gende<br><em>n&eacute;e en guerre</em>",
+    "history.p1": "Le Piper J-3 Cub est l&rsquo;un des avions les plus embl&eacute;matiques de l&rsquo;aviation l&eacute;g&egrave;re mondiale. N&eacute; dans les ann&eacute;es 1930, il a form&eacute; des g&eacute;n&eacute;rations de pilotes et acquis ses lettres de noblesse lors de la Seconde Guerre mondiale sous la d&eacute;signation militaire <strong>L-4 Grasshopper</strong>, servant &agrave; l&rsquo;observation et &agrave; la liaison pour l&rsquo;arm&eacute;e am&eacute;ricaine.",
+    "history.p2": "Notre HB-OCI, portant le num&eacute;ro de s&eacute;rie militaire <strong>44-12534</strong>, est sorti d&rsquo;usine en 1944. Apr&egrave;s son service, il a travers&eacute; diff&eacute;rentes mains et pays avant de rejoindre la Suisse, o&ugrave; il porte fi&egrave;rement son immatriculation suisse depuis les ann&eacute;es 1960.",
+    "history.p3": "Aujourd&rsquo;hui bas&eacute; &agrave; Birrfeld (LSZF) au sein de la Fluggruppe Albatros, cet appareil repr&eacute;sente un morceau d&rsquo;histoire vivant, <strong>m&eacute;ticuleusement entretenu</strong>, pr&ecirc;t &agrave; transmettre la magie du vol &laquo; &agrave; l&rsquo;ancienne &raquo; &agrave; son prochain propri&eacute;taire.",
+    "history.timeline": "Chronologie",
+    "tl.1944": "Production WWII &mdash; N&deg; de s&eacute;rie militaire 44-12534 (ex. 12704). Service en tant que L-4 Grasshopper.",
+    "tl.60s.year": "Ann&eacute;es 60",
+    "tl.60s": "Immatriculation suisse HB-OCI. Bas&eacute; au terrain d&rsquo;Ecuvillens. Anciennement enregistr&eacute; SE-AUG.",
+    "tl.1969": "Accident r&eacute;f&eacute;renc&eacute; &mdash; enqu&ecirc;te et documentation disponible.",
+    "tl.1994": "Reconstruction compl&egrave;te et peinture jaune caract&eacute;ristique. Transfert &agrave; M&ocirc;tier.",
+    "tl.2001": "Transfert &agrave; Schupfart.",
+    "tl.2013": "Int&eacute;gration &agrave; la Fluggruppe Albatros, Birrfeld (LSZF).",
+    "tl.2022": "R&eacute;vision moteur compl&egrave;te (Cermec). Continental C 90-8F remis &agrave; neuf.",
+    "tl.2025": "R&eacute;paration fuselage (nov. 2024). Nouvelle ligne d&rsquo;&eacute;chappement (oct. 2025). Airbox filtre papier-huile (f&eacute;v. 2025). Inspection BAZL (mai 2025).",
+    "gallery.label": "Galerie Photographique",
+    "gallery.title": "L&rsquo;avion en images",
+    "gallery.main": "Vue principale",
+    "gallery.l1": "D&eacute;tail",
+    "gallery.l2": "D&eacute;tail",
+    "gallery.l3": "Cockpit",
+    "gallery.l4": "Moteur",
+    "gallery.l5": "Avionique",
+    "gallery.hint": "CLIQUEZ SUR UNE PHOTO POUR AGRANDIR",
+    "specs.label": "Fiche Technique",
+    "specs.title": "Caract&eacute;ristiques<br><em>&amp; &eacute;tat g&eacute;n&eacute;ral</em>",
+    "specs.id.header": "Identification",
+    "specs.id.model": "Mod&egrave;le",
+    "specs.id.reg": "Immatriculation",
+    "specs.id.sn": "Num&eacute;ro de s&eacute;rie",
+    "specs.id.prev": "Anciens num&eacute;ros",
+    "specs.id.year": "Ann&eacute;e",
+    "specs.id.country": "Pays",
+    "specs.id.ch": "Suisse",
+    "specs.hours.header": "Heures de vol",
+    "specs.hours.tsn": "Total cellule (TSN)",
+    "specs.hours.tso": "Cellule depuis r&eacute;vision (TSO)",
+    "specs.hours.etsn": "Moteur TSN",
+    "specs.hours.etso": "Moteur depuis r&eacute;vision (TSO)",
+    "specs.hours.next": "Prochaine r&eacute;vision moteur",
+    "specs.hours.next.val": "dans ~1&thinsp;600 h",
+    "specs.engine.header": "Moteur &amp; H&eacute;lice",
+    "specs.engine.type": "Moteur",
+    "specs.engine.sn": "N&deg; de s&eacute;rie moteur",
+    "specs.engine.overhaul": "R&eacute;vision moteur",
+    "specs.engine.overhaul.val": "Cermec, mai 2022",
+    "specs.engine.fuel": "Carburant",
+    "specs.engine.prop": "H&eacute;lice",
+    "specs.engine.mfr": "Fabricant",
+    "specs.engine.propstat": "&Eacute;tat h&eacute;lice",
+    "specs.maint.header": "Inspections &amp; Entretien",
+    "specs.maint.bazl": "Inspection BAZL",
+    "specs.maint.bazl.val": "Mai 2025",
+    "specs.maint.next": "Prochaine inspection BAZL",
+    "specs.maint.next.val": "Avril 2026",
+    "specs.maint.struct": "Inspection structure",
+    "specs.maint.struct.val": "Mai 2025",
+    "specs.maint.exhaust": "Ligne d&rsquo;&eacute;chappement",
+    "specs.maint.exhaust.val": "Neuve &mdash; Oct. 2025",
+    "specs.maint.airbox": "Airbox filtre huile",
+    "specs.maint.airbox.val": "F&eacute;v. 2025",
+    "specs.maint.fuse": "R&eacute;paration fuselage",
+    "specs.maint.fuse.val": "Nov. 2024 (avec rapport)",
+    "specs.maint.corr": "Corrosion",
+    "specs.maint.corr.val": "Aucune",
+    "av.label": "Avionique Moderne",
+    "av.title": "&Eacute;quipements &amp; Navigation",
+    "av.intro": "Malgr&eacute; son &acirc;ge, le HB-OCI est &eacute;quip&eacute; d&rsquo;une avionique moderne et conforme aux exigences actuelles de l&rsquo;espace a&eacute;rien europ&eacute;en.",
+    "av.transponder": "Transpondeur ADS-B",
+    "av.transponder.detail": "Mode S &middot; ADS-B OUT &middot; S/N 2013<br>Encoder Becker BE 6400",
+    "av.radio": "Radio VHF",
+    "av.radio.detail": "Communication radio certifi&eacute;e<br>Intercom PS Engineering PM 1000 II",
+    "av.elt.detail": "S/N 2013<br>Batterie remplac&eacute;e 10/2025",
+    "av.flarm": "Anti-collision FLARM",
+    "av.flarm.detail": "PowerFLARM avec WiFi interne<br>Syst&egrave;me de d&eacute;tection de trafic",
+    "av.elec": "Syst&egrave;me &Eacute;lectrique",
+    "av.elec.detail": "&Eacute;quipement rare et pr&eacute;cieux sur un Cub d&rsquo;origine &mdash; le <strong style='color:var(--gold-light)'>BPE-14 TurboAlternator</strong> fournit une alimentation &eacute;lectrique fiable pour alimenter l&rsquo;ensemble de l&rsquo;avionique moderne, transformant ce classique en avion pleinement op&eacute;rationnel pour l&rsquo;espace a&eacute;rien actuel.",
+    "av.elec.banner.title": "Syst&egrave;me &Eacute;lectrique &mdash; Avantage D&eacute;cisif",
+    "av.elec.banner.text": "L&rsquo;installation du <span>BPE-14 TurboAlternator</span> est l&rsquo;un des atouts majeurs de ce Cub. Contrairement &agrave; de nombreux J-3 qui restent d&eacute;pourvus d&rsquo;&eacute;lectricit&eacute;, ce syst&egrave;me permet d&rsquo;alimenter en continu l&rsquo;ensemble de l&rsquo;avionique moderne. Une valeur ajout&eacute;e consid&eacute;rable pour la s&eacute;curit&eacute; et la conformit&eacute; r&eacute;glementaire.",
+    "docs.label": "Documentation",
+    "docs.title": "Dossier <em>complet</em>",
+    "docs.cdn.label": "Navigabilit&eacute;",
+    "docs.cdn.text": "Certificat de navigabilit&eacute; (CDN) en cours de validit&eacute;",
+    "docs.logs.label": "Carnets de vol",
+    "docs.logs.text": "Livrets de vol et carnet de maintenance complets",
+    "docs.noise.label": "Acoustique",
+    "docs.noise.text": "Certificat de limitation sonore (selon applicabilit&eacute;)",
+    "docs.cert.label": "Certifications",
+    "docs.cert.text": "Type certificate et certifications suisses &mdash; copies disponibles",
+    "docs.rep.label": "Rapports travaux",
+    "docs.rep.text": "Rapport complet r&eacute;paration fuselage 2024 avec photos",
+    "price.label": "Prix &amp; Contact",
+    "price.title": "Acquisition",
+    "price.selling": "PRIX DE VENTE",
+    "price.note": "CHF &middot; Hors TVA &middot; N&eacute;gociable",
+    "price.avail": "Disponible d&egrave;s le 1er avril 2026",
+    "price.cond.label": "CONDITIONS",
+    "price.cond.text": "Vendu en l&rsquo;&eacute;tat, sans garantie.<br>Visite possible &agrave; Birrfeld (LSZF).<br>Export possible &mdash; se renseigner pour les documents requis.",
+    "price.contact": "Contact",
+    "price.phone": "T&eacute;l&eacute;phone / WhatsApp",
+    "price.location": "Localisation",
+    "price.location.val": "Flugplatz Birrfeld &middot; LSZF &middot; Suisse",
+    "price.visit": "Disponibilit&eacute; pour visite",
+    "price.visit.val": "Variable et flexible &mdash; sur rendez-vous"
+  },
+
+  de: {
+    "hero.label": "Zu Verkaufen &middot; For Sale &middot; &Agrave; vendre",
+    "hero.sub": "Ein legend&auml;res Flugzeug aus dem Jahr 1944 &mdash; Fliegen in seiner reinsten Form. Jetzt bereit, seine Geschichte fortzuschreiben.",
+    "hero.scroll": "SCROLLEN",
+    "stats.built": "Baujahr",
+    "stats.airframe": "Zellenstunden (TSN)",
+    "stats.engine": "Motorstunden (TSO)",
+    "stats.history": "Jahre Geschichte",
+    "history.label": "Geschichte &amp; Herkunft",
+    "history.title": "Eine Legende<br><em>geboren im Krieg</em>",
+    "history.p1": "Der Piper J-3 Cub ist eines der ikonischsten Flugzeuge der Leichtfliegerei. In den 1930er Jahren geboren, hat er Generationen von Piloten ausgebildet und sich im Zweiten Weltkrieg unter der milit&auml;rischen Bezeichnung <strong>L-4 Grasshopper</strong> als Beobachtungs- und Verbindungsflugzeug der US Army bew&auml;hrt.",
+    "history.p2": "Unser HB-OCI mit der Milit&auml;rseriennummer <strong>44-12534</strong> verliess das Werk 1944. Nach seinem Dienst wechselte er mehrfach Besitzer und L&auml;nder, bevor er in der Schweiz eine neue Heimat fand, wo er seit den 1960er Jahren stolz seine Schweizer Immatrikulation tr&auml;gt.",
+    "history.p3": "Heute auf dem Birrfeld (LSZF) bei der Fluggruppe Albatros stationiert, ist dieses Flugzeug ein lebendiges St&uuml;ck Geschichte, <strong>akribisch gewartet</strong> und bereit, die Magie des klassischen Fliegens an seinen n&auml;chsten Eigent&uuml;mer weiterzugeben.",
+    "history.timeline": "Chronologie",
+    "tl.1944": "WWII-Produktion &mdash; Milit&auml;rseriennummer 44-12534 (ex. 12704). Dienst als L-4 Grasshopper.",
+    "tl.60s.year": "1960er Jahre",
+    "tl.60s": "Schweizer Immatrikulation HB-OCI. Stationiert auf dem Flugplatz Ecuvillens. Fr&uuml;her als SE-AUG eingetragen.",
+    "tl.1969": "Dokumentierter Unfall &mdash; Untersuchungsbericht vorhanden.",
+    "tl.1994": "Kompletter Wiederaufbau und ikonischer Gelbauftrag. Transfer nach M&ocirc;tier.",
+    "tl.2001": "Transfer nach Schupfart.",
+    "tl.2013": "Aufnahme in die Fluggruppe Albatros, Birrfeld (LSZF).",
+    "tl.2022": "Komplette Motorrevision (Cermec). Continental C 90-8F general&uuml;berholt.",
+    "tl.2025": "Rumpfreparatur (Nov. 2024). Neue Auspuffanlage (Okt. 2025). Airbox &Ouml;lpapierfilter (Feb. 2025). BAZL-Inspektion (Mai 2025).",
+    "gallery.label": "Fotogalerie",
+    "gallery.title": "Das Flugzeug in Bildern",
+    "gallery.main": "Hauptansicht",
+    "gallery.l1": "Detail",
+    "gallery.l2": "Detail",
+    "gallery.l3": "Cockpit",
+    "gallery.l4": "Motor",
+    "gallery.l5": "Avionik",
+    "gallery.hint": "FOTO ANKLICKEN ZUM VERGR&Ouml;SSERN",
+    "specs.label": "Technisches Datenblatt",
+    "specs.title": "Technische Daten<br><em>&amp; Zustand</em>",
+    "specs.id.header": "Identifikation",
+    "specs.id.model": "Modell",
+    "specs.id.reg": "Immatrikulation",
+    "specs.id.sn": "Seriennummer",
+    "specs.id.prev": "Fr&uuml;here Nummern",
+    "specs.id.year": "Baujahr",
+    "specs.id.country": "Land",
+    "specs.id.ch": "Schweiz",
+    "specs.hours.header": "Flugstunden",
+    "specs.hours.tsn": "Zelle gesamt (TSN)",
+    "specs.hours.tso": "Zelle seit Revision (TSO)",
+    "specs.hours.etsn": "Motor gesamt (TSN)",
+    "specs.hours.etso": "Motor seit Revision (TSO)",
+    "specs.hours.next": "N&auml;chste Motorrevision",
+    "specs.hours.next.val": "in ca. 1.600 Std.",
+    "specs.engine.header": "Motor &amp; Propeller",
+    "specs.engine.type": "Motor",
+    "specs.engine.sn": "Motor-Seriennr.",
+    "specs.engine.overhaul": "Motorrevision",
+    "specs.engine.overhaul.val": "Cermec, Mai 2022",
+    "specs.engine.fuel": "Kraftstoff",
+    "specs.engine.prop": "Propeller",
+    "specs.engine.mfr": "Hersteller",
+    "specs.engine.propstat": "Propellerstatus",
+    "specs.maint.header": "Inspektionen &amp; Wartung",
+    "specs.maint.bazl": "BAZL-Inspektion",
+    "specs.maint.bazl.val": "Mai 2025",
+    "specs.maint.next": "N&auml;chste BAZL-Pr&uuml;fung",
+    "specs.maint.next.val": "April 2026",
+    "specs.maint.struct": "Strukturinspektion",
+    "specs.maint.struct.val": "Mai 2025",
+    "specs.maint.exhaust": "Auspuffanlage",
+    "specs.maint.exhaust.val": "Neu &mdash; Okt. 2025",
+    "specs.maint.airbox": "Airbox-Filter",
+    "specs.maint.airbox.val": "Feb. 2025",
+    "specs.maint.fuse": "Rumpfreparatur",
+    "specs.maint.fuse.val": "Nov. 2024 (mit Bericht)",
+    "specs.maint.corr": "Korrosion",
+    "specs.maint.corr.val": "Keine",
+    "av.label": "Moderne Avionik",
+    "av.title": "Ausr&uuml;stung &amp; Navigation",
+    "av.intro": "Trotz seines Alters ist der HB-OCI mit moderner Avionik ausgestattet, die den aktuellen Anforderungen des europ&auml;ischen Luftraums vollst&auml;ndig entspricht.",
+    "av.transponder": "ADS-B Transponder",
+    "av.transponder.detail": "Mode S &middot; ADS-B OUT &middot; S/N 2013<br>Encoder Becker BE 6400",
+    "av.radio": "VHF-Funk",
+    "av.radio.detail": "Zugelassenes VHF-Funkger&auml;t<br>Intercom PS Engineering PM 1000 II",
+    "av.elt.detail": "S/N 2013<br>Batterie gewechselt 10/2025",
+    "av.flarm": "FLARM Kollisionswarnung",
+    "av.flarm.detail": "PowerFLARM mit internem WLAN<br>Verkehrserkennungssystem",
+    "av.elec": "Elektrisches System",
+    "av.elec.detail": "Selten und wertvoll f&uuml;r einen Original-Cub &mdash; der <strong style='color:var(--gold-light)'>BPE-14 TurboAlternator</strong> versorgt die gesamte moderne Avionik zuverl&auml;ssig mit Strom und macht diesen Klassiker im heutigen Luftraum voll einsatzf&auml;hig.",
+    "av.elec.banner.title": "Elektrisches System &mdash; Entscheidender Vorteil",
+    "av.elec.banner.text": "Der eingebaute <span>BPE-14 TurboAlternator</span> ist eines der gr&ouml;ssten Merkmale dieses Cubs. Im Gegensatz zu vielen J-3 ohne elektrisches System versorgt dieses System die gesamte Avionik dauerhaft mit Strom &mdash; ein erheblicher Mehrwert f&uuml;r Sicherheit und regulatorische Konformit&auml;t.",
+    "docs.label": "Dokumentation",
+    "docs.title": "<em>Vollst&auml;ndiges</em> Dossier",
+    "docs.cdn.label": "Luftt&uuml;chtigkeit",
+    "docs.cdn.text": "G&uuml;ltiges Luftt&uuml;chtigkeitszeugnis (CDN)",
+    "docs.logs.label": "Bordb&uuml;cher",
+    "docs.logs.text": "Vollst&auml;ndige Flug- und Wartungsb&uuml;cher",
+    "docs.noise.label": "L&auml;rm",
+    "docs.noise.text": "L&auml;rmschutzzertifikat (falls zutreffend)",
+    "docs.cert.label": "Zertifikate",
+    "docs.cert.text": "Musterzulassung und Schweizer Zertifikate &mdash; Kopien vorhanden",
+    "docs.rep.label": "Wartungsberichte",
+    "docs.rep.text": "Vollst&auml;ndiger Rumpfreparaturbericht 2024 mit Fotos",
+    "price.label": "Preis &amp; Kontakt",
+    "price.title": "Erwerb",
+    "price.selling": "VERKAUFSPREIS",
+    "price.note": "CHF &middot; Exkl. MwSt. &middot; Verhandelbar",
+    "price.avail": "Verf&uuml;gbar ab 1. April 2026",
+    "price.cond.label": "BEDINGUNGEN",
+    "price.cond.text": "Verkauf im Ist-Zustand, ohne Garantie.<br>Besichtigung in Birrfeld (LSZF).<br>Export m&ouml;glich &mdash; Dokumente auf Anfrage.",
+    "price.contact": "Kontakt",
+    "price.phone": "Telefon / WhatsApp",
+    "price.location": "Standort",
+    "price.location.val": "Flugplatz Birrfeld &middot; LSZF &middot; Schweiz",
+    "price.visit": "Besichtigungstermine",
+    "price.visit.val": "Flexibel &mdash; nach Vereinbarung"
+  }
+};
+
+/* ════════════════════════════
+   ENGINE
+════════════════════════════ */
+function applyLang(lang) {
+  const t = i18n[lang] || i18n.en;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (t[k] !== undefined) el.innerHTML = t[k];
   });
+  document.documentElement.lang = lang;
+  const titles = { en: 'HB-OCI \u00B7 Piper J3C-65 \u00B7 For Sale', fr: 'HB-OCI \u00B7 Piper J3C-65 \u00B7 \u00C0 vendre', de: 'HB-OCI \u00B7 Piper J3C-65 \u00B7 Zu Verkaufen' };
+  document.title = titles[lang] || titles.en;
+  ['en','fr','de'].forEach(l => document.getElementById('btn-'+l).classList.toggle('active', l === lang));
+}
 
-  // Lightbox
-  function openLightbox(src) {
-    document.getElementById('lightbox-img').src = src;
-    document.getElementById('lightbox').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+function setLang(lang) {
+  const u = new URL(window.location.href);
+  u.searchParams.set('lang', lang);
+  history.replaceState({}, '', u);
+  applyLang(lang);
+}
 
-  // Photo placeholder helper
-  function makePhotoPlaceholder(name) {
-    return `<div class="photo-placeholder"><div class="ph-icon">📷</div><div class="ph-name">${name}</div></div>`;
-  }
+/* Init */
+(function() {
+  const p = new URLSearchParams(window.location.search);
+  const l = p.get('lang');
+  applyLang(['en','fr','de'].includes(l) ? l : 'en');
+})();
 
-  // Timeline animation on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 100);
-      }
-    });
-  }, { threshold: 0.1 });
+/* Photo case fallback */
+document.querySelectorAll('img[src^="photos/"]').forEach(img => {
+  img.addEventListener('error', function() {
+    const s = this.getAttribute('src') || '';
+    if (s.endsWith('.JPG'))  { this.src = s.replace('.JPG','.jpg');  return; }
+    if (s.endsWith('.jpg'))  { this.src = s.replace('.jpg','.JPG');  return; }
+    if (s.endsWith('.JPEG')) { this.src = s.replace('.JPEG','.jpeg'); return; }
+  }, { once: true });
+});
 
-  document.querySelectorAll('.tl-item').forEach(el => observer.observe(el));
+/* Lightbox */
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-  // Smooth gallery item entrance
-  const galleryObs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => {
-          e.target.style.opacity = '1';
-          e.target.style.transform = 'translateY(0)';
-        }, i * 80);
-      }
-    });
-  }, { threshold: 0.05 });
+/* Placeholder */
+function makePH(name) {
+  return '<div class="photo-placeholder"><div class="ph-icon">\uD83D\uDCF7</div><div class="ph-name">'+name+'</div></div>';
+}
 
-  document.querySelectorAll('.gallery-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    galleryObs.observe(el);
+/* Timeline animation */
+const tlObs = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i*100); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.tl-item').forEach(el => tlObs.observe(el));
+
+/* Gallery entrance */
+const gObs = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => {
+    if (e.isIntersecting) setTimeout(() => {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }, i*80);
   });
-
+}, { threshold: 0.05 });
+document.querySelectorAll('.gallery-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  gObs.observe(el);
+});
 </script>
-
 </body>
 </html>
